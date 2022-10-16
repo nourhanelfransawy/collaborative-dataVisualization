@@ -1,9 +1,22 @@
+//import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  //configures information to connect with Firebase Project.
+  production: false,
+   firebaseConfig : {
+    apiKey: "AIzaSyCXoUl_xF8_lXQQAY1exJzptRbuVXjJENY",
+    authDomain: "datavisualization-firebase.firebaseapp.com",
+    projectId: "datavisualization-firebase",
+    storageBucket: "datavisualization-firebase.appspot.com",
+    messagingSenderId: "948354467280",
+    appId: "1:948354467280:web:093d02030298fd7c5ee5d5"
+  }, 
+
+
+
 };
 
 /*

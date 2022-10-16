@@ -1,0 +1,57 @@
+<h1>{{title}}</h1>
+<div class="csv-file-chooser-section">
+    <input type="file" #fileImportInput name="File Upload" id="csvFileUpload" 
+    (change)="fileChangeListener($event)"
+      accept=".csv"/>
+  </div>
+  
+   <div class="csv-result-table">
+  
+     <table>
+      <thead>
+        <tr>
+          <!-- <th>#</th> -->
+          <th>Day</th>
+          <th>Spain</th>
+          <th>Poland</th>
+          <th>Portuagl</th>
+          <th>Slovenia</th>
+          <th>Slovakia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let csvData of csvRecords;let i = index;">
+        
+          <!-- <td>{{i+1}}</td> -->
+          <td>
+            <span>{{csvData.Day}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Spain}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Poland}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Portugal}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Slovenia}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Slovakia}}</span>
+          </td>
+  
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+  <div id="myDiv1"style="width:600px;height:250px;color: powderblue;float:left 
+  ;padding-left:100px ;padding-bottom:50px; margin:10px"></div> 
+
+  <div>
+    <label>More info about the point you hover on</label><br>
+    <textarea readonly id="moreinfo" name="pointData" rows="5" cols="50">
+    {{pointInfo}}
+    </textarea><br>
+  </div>

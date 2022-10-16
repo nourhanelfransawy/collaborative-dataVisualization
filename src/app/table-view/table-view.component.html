@@ -1,0 +1,137 @@
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://x3dom.org/release/x3dom.js"></script>
+    <link rel="stylesheet" href="https://x3dom.org/release/x3dom.css" />
+    <script src="https://raw.githack.com/jamesleesaunders/d3-x3d/master/dist/d3-x3d.js"></script>
+ </head>
+ <h1>Choose one of the continents to view data</h1>
+<div class="csv-file-chooser-section">
+    <label style="color:red">Europe </label> &nbsp;
+    <input type="file"  #fileImportInput name="Europe" id="csvFileUpload" 
+    (change)="fileChangeListener($event)" 
+      accept=".csv"/>
+      <label style="color:red">Africa</label> &nbsp;
+    <input type="file" #fileImportInput name="Africa" id="csvFileUpload2" 
+    (change)="fileChangeListener($event)"
+      accept=".csv"/>
+      <label style="color:red">Asia</label> &nbsp;
+      <input type="file" #fileImportInput name="Asia" id="csvFileUpload2" 
+      (change)="fileChangeListener($event)"
+        accept=".csv"/> <br>
+        <label style="color:red">NorthAmerica</label> &nbsp;
+        <input type="file" #fileImportInput name="NorthAmerica" id="csvFileUpload2" 
+        (change)="fileChangeListener($event)"
+          accept=".csv"/>
+          <label style="color:red">SouthAmerica</label> &nbsp;
+          <input type="file" #fileImportInput name="SouthAmerica" id="csvFileUpload2" 
+          (change)="fileChangeListener($event)"
+            accept=".csv"/>
+            <label style="color:red">Australlia</label> &nbsp;
+            <input type="file" #fileImportInput name="Australlia" id="csvFileUpload2" 
+          (change)="fileChangeListener($event)"
+            accept=".csv"/>
+
+
+            <label style="color:blue">
+                Choose a continent to view corona info in a table 
+                </label> &nbsp;
+
+                <select aria-placeholder="Continent" [(ngModel)]="header" 
+                (ngModelChange)="chooseContinent($event)">
+                <!-- <option default>choose Continent</option> -->
+                <option value="europe">europe</option>
+                <option value="asia">asia</option> 
+                <option value="africa">africa</option> 
+                <option value="southAmerica">southAmerica</option> 
+                <option value="northAmerica">northAmerica</option> 
+                
+
+                </select>
+                
+
+  </div>
+  
+   <div class="csv-result-table">
+  
+     <table>
+      <thead>
+        <tr>
+          <!-- <th>#</th> -->
+          <th>Number</th>
+          <th>Country</th>
+          <th>Totalcases</th>
+          <th>TotalDeaths</th>
+          <th>TotalRecovered</th>
+          <th>Activecases</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let csvData of csvRecords;let i = index;">
+        
+          <!-- <td>{{i+1}}</td> -->
+          <td>
+            <span>{{csvData.Number}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Country}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Totalcases}}</span>
+          </td>
+          <td>
+            <span>{{csvData.TotalDeaths}}</span>
+          </td>
+          <td>
+            <span>{{csvData.TotalRecovered}}</span>
+          </td>
+          <td>
+            <span>{{csvData.Activecases}}</span>
+          </td>
+  
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+ 
+  <div id="myDiv" style="width:600px;height:250px;color: powderblue;float:left ;padding-left:100px ;padding-bottom:50px"></div>    
+  
+<div style="float:left;">
+<label>More info about the point you hover on</label><br>
+<textarea readonly id="moreinfo" name="pointData" rows="10" cols="50">
+{{pointInfo}}
+</textarea><br>
+
+   <select  aria-placeholder="Continent" [(ngModel)]="header1"  (ngModelChange)="selectContinent($event)"  >
+    <option value="europe">europe</option>
+    <option value="asia">asia</option> 
+    <option value="africa">africa</option> 
+    <option value="southAmerica">southAmerica</option> 
+    <option value="northAmerica">northAmerica</option> 
+    </select>  &nbsp;
+
+    <button type="button"  routerLink="/viewCountries/:{{continentName}}">
+        Go to view Countries of this continent
+      </button>
+
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div class="submit-form">
+    <!-- *ngIf="submitted" -->
+    <div >
+      <h4>Look at these points with me!</h4>
+      <ul>
+   
+    <li *ngFor="let data of arr;">
+        {{ data | json }}
+    </li>  
+  </ul>
+
+      <!-- <button class="btn btn-success" (click)="DisplayCountryData()"> Display Countries of this Continent</button> -->
+      
+    </div>
+    <!-- <a class="btn" routerLink="/countryData/{{con.name}}">Select one of the continents to see info about its countries</a> -->
+
+
+
+      
+</div>
