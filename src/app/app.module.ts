@@ -15,12 +15,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { LineChart2Component } from './line-chart2/line-chart2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableViewComponent,
-    LineChartComponent
+    LineChartComponent,
+    LineChart2Component
   ],
   imports: [
     BrowserModule,

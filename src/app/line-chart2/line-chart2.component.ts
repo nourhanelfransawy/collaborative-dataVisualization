@@ -7,10 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-line-chart',
-  templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.css']
+  templateUrl: './line-chart2.component.html',
+  styleUrls: ['./line-chart2.component.css']
 })
-export class LineChartComponent implements OnInit {
+export class LineChart2Component implements OnInit {
   
   csvRecords: any[] = [];
   header=false;
@@ -27,7 +27,8 @@ export class LineChartComponent implements OnInit {
   ngOnInit() {
     console.log("data of ",String(this.route.snapshot.paramMap.get('continentNum')));
     this.title = String(this.route.snapshot.paramMap.get('continentNum'));
-    this.title="Corona data for countries of Europe";
+    // this.title="Countries of "+this.title;
+    this.title="Corona data for countries of Africa";
   }
 
 
@@ -56,29 +57,29 @@ export class LineChartComponent implements OnInit {
 
     var x1 = unpack(rows , 'one');
     var y1 = unpack(rows , 'Day');
-    var z1 = unpack(rows , 'Spain');
+    var z1 = unpack(rows , 'Afghanistan');
 
     
     var x2 = unpack(rows , 'two');
     var y2 = unpack(rows , 'Day');
-    var z2 = unpack(rows , 'Poland');
+    var z2 = unpack(rows , 'Bangladesh');
     
 
     var x3 = unpack(rows , 'three');
     var y3 = unpack(rows , 'Day');
-    var z3 = unpack(rows , 'Portugal');
+    var z3 = unpack(rows , 'Congo');
 
     var x4 = unpack(rows , 'four');
     var y4 = unpack(rows , 'Day');
-    var z4 = unpack(rows , 'Slovenia');
+    var z4 = unpack(rows , 'CotedIvoire');
 
     var x5 = unpack(rows , 'five');
     var y5 = unpack(rows , 'Day');
-    var z5 = unpack(rows , 'Slovakia');
+    var z5 = unpack(rows , 'Egypt');
     
     var trace1 = {
       type: 'scatter3d',
-      name:'Spain',
+      name:'Afghanistan',
       mode: 'lines',
       x: x1,
       y: y1,
@@ -100,7 +101,7 @@ export class LineChartComponent implements OnInit {
 
     var trace2 = {
       type: 'scatter3d',
-      name:'Poland', 
+      name:'Bangladesh', 
       mode: 'lines',
       x: x2,
       y: y2,
@@ -126,7 +127,7 @@ export class LineChartComponent implements OnInit {
 
     var trace3 = {
       type: 'scatter3d',
-      name:'Portugal',
+      name:'Congo',
       mode: 'lines',
       x: x3,
       y: y3,
@@ -148,7 +149,7 @@ export class LineChartComponent implements OnInit {
 
     var trace4 = {
       type: 'scatter3d',
-      name:'Slovenia',
+      name:'CotedIvoire',
       mode: 'lines',
       x: x4,
       y: y4,
@@ -169,7 +170,7 @@ export class LineChartComponent implements OnInit {
     };
     var trace5 = {
       type: 'scatter3d',
-      name:'Slovekia',
+      name:'Egypt',
       mode: 'lines',
       x: x5,
       y: y5,
@@ -245,42 +246,42 @@ export class LineChartComponent implements OnInit {
         
         this.pointInfo="Country: ";
 
-   
+
         switch(d.x){
-          case '1':this.pointInfo+='Spain';
+          case '1':this.pointInfo+='Afghanistan';
           for(var i=0;i<rows.length;i++){
-            if(rows[i].Day==d.y && rows[i].Spain==d.z){
+            if(rows[i].Day==d.y && rows[i].Afghanistan==d.z){
               this.pointInfo+='\n' + "Day: "+d.y +'\n'
               +"Total cases: "+ d.z +'\n'+
-              "Total deaths: "+ rows[i].SpainDeaths;
+              "Total deaths: "+ rows[i].AfghanistanDeaths;
               }};break;
-          case '2':this.pointInfo+='Poland';
+          case '2':this.pointInfo+='Bangladesh';
           for(var i=0;i<rows.length;i++){
-            if(rows[i].Day==d.y && rows[i].Poland==d.z){
+            if(rows[i].Day==d.y && rows[i].Bangladesh==d.z){
               this.pointInfo+='\n' + "Day: "+d.y +'\n'
               +"Total cases: "+ d.z +'\n'+
-              "Total deaths: "+ rows[i].PolandDeaths;
+              "Total deaths: "+ rows[i].BangladeshDeaths;
               }};break;
-          case '3':this.pointInfo+='Portugal';
+          case '3':this.pointInfo+='Congo';
           for(var i=0;i<rows.length;i++){
-            if(rows[i].Day==d.y && rows[i].Portugal==d.z){
+            if(rows[i].Day==d.y && rows[i].Congo==d.z){
               this.pointInfo+='\n' + "Day: "+d.y +'\n'
               +"Total cases: "+ d.z +'\n'+
-              "Total deaths: "+ rows[i].PortugalDeaths;
+              "Total deaths: "+ rows[i].CongoDeaths;
               }};break;
-          case '4':this.pointInfo+='Slovenia';
+          case '4':this.pointInfo+='CotedIvoire';
           for(var i=0;i<rows.length;i++){
-            if(rows[i].Day==d.y && rows[i].Slovenia==d.z){
+            if(rows[i].Day==d.y && rows[i].CotedIvoire==d.z){
               this.pointInfo+='\n' + "Day: "+d.y +'\n'
               +"Total cases: "+ d.z +'\n'+
-              "Total deaths: "+ rows[i].SloveniaDeaths;
+              "Total deaths: "+ rows[i].CotedIvoireDeaths;
               }};break;
-          case '5':this.pointInfo+='Slovakia';
+          case '5':this.pointInfo+='Egypt';
           for(var i=0;i<rows.length;i++){
-            if(rows[i].Day==d.y && rows[i].Slovakia==d.z){
+            if(rows[i].Day==d.y && rows[i].Egypt==d.z){
               this.pointInfo+='\n' + "Day: "+d.y +'\n'
               +"Total cases: "+ d.z +'\n'+
-              "Total deaths: "+ rows[i].SlovakiaDeaths;
+              "Total deaths: "+ rows[i].EgyptDeaths;
               }};break;
         }
       })

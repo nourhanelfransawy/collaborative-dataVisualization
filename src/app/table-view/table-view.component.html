@@ -62,7 +62,7 @@
           <th>Totalcases</th>
           <th>TotalDeaths</th>
           <th>TotalRecovered</th>
-          <th>Activecases</th>
+          <th>Population</th>
         </tr>
       </thead>
       <tbody>
@@ -85,7 +85,7 @@
             <span>{{csvData.TotalRecovered}}</span>
           </td>
           <td>
-            <span>{{csvData.Activecases}}</span>
+            <span>{{csvData.Population}}</span>
           </td>
   
         </tr>
@@ -102,14 +102,14 @@
 </textarea><br>
 
    <select  aria-placeholder="Continent" [(ngModel)]="header1"  (ngModelChange)="selectContinent($event)"  >
-    <option value="europe">europe</option>
-    <option value="asia">asia</option> 
-    <option value="africa">africa</option> 
-    <option value="southAmerica">southAmerica</option> 
-    <option value="northAmerica">northAmerica</option> 
+    <option value="Europe">Europe</option>
+    <option value="Asia">Asia</option> 
+    <option value="Africa">Africa</option> 
+    <option value="SouthAmerica">SouthAmerica</option> 
+    <option value="NorthAmerica">NorthAmerica</option> 
     </select>  &nbsp;
 
-    <button type="button"  routerLink="/viewCountries/:{{continentName}}">
+    <button type="button"  routerLink="/view{{continentName}}Countries">
         Go to view Countries of this continent
       </button>
 

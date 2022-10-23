@@ -39,7 +39,7 @@ export class TableViewComponent implements OnInit {
 
   textOfY:string='TotalDeaths';
 
-  textOfZ:string='TotalRecovered';
+  textOfZ:string='Population';
 
   data:any;
   layout:any;
@@ -88,17 +88,17 @@ export class TableViewComponent implements OnInit {
 
   }
   selectContinent(selectVal:any):void{
-    console.log("hello",selectVal);
-    if(selectVal=="europe"){
-      this.continentName="europe";
-  }else if(selectVal=="asia"){
-    this.continentName="asia";
-} else if(selectVal=="africa"){
-  this.continentName="africa";
-} else if(selectVal=="southAmerica"){
-  this.continentName="southAmerica";
-} else if(selectVal=="northAmerica"){
-  this.continentName="northAmerica";
+    //console.log("hello",selectVal);
+    if(selectVal=="Europe"){
+      this.continentName="Europe";
+  }else if(selectVal=="Asia"){
+    this.continentName="Asia";
+} else if(selectVal=="Africa"){
+  this.continentName="Africa";
+} else if(selectVal=="SouthAmerica"){
+  this.continentName="SouthAmerica";
+} else if(selectVal=="NorthAmerica"){
+  this.continentName="NorthAmerica";
 } 
   }
   chooseContinent(selectVal:any):void{
@@ -210,7 +210,7 @@ this.viewScatterPlotWithInteraction(this.csvRecords);
         } 
         for(var i=0;i<rows.length;i++){
           if(rows[i].Totalcases==data.points[0].x && rows[i].TotalDeaths==data.points[0].y
-            && rows[i].TotalRecovered==data.points[0].z){
+            && rows[i].Population==data.points[0].z){
               this.selectedPoint.index=i;
               if(!(this.arrayContains(this.indicies,i))){
               this.indicies.push(i);
@@ -227,8 +227,8 @@ this.viewScatterPlotWithInteraction(this.csvRecords);
         data.points.map((d)=>{
           for(var i=0;i<rows.length;i++){
             if(rows[i].Totalcases==d.x && rows[i].TotalDeaths==d.y
-              && rows[i].TotalRecovered==d.z){
-                 console.log(rows[i]);
+              && rows[i].Population==d.z){
+                 //console.log(rows[i]);
                  this.pointInfo=' ';
                  this.pointInfo="Number: "+ rows[i].Number +'\n'
                  +"Country: "+ rows[i].Country +'\n'+
@@ -261,10 +261,12 @@ arrayContains(arr:any[],element:number):boolean{
 }
 
        saveIndexOfSelectedPoint(): void {
+        console.log('here');
           this.dvService.create(this.selectedPoint).then(() => {
             console.log('Created new item successfully!');
             this.submitted = true;
-          });      }
+          });    
+          }
 
         newPoint(): void {
           this.submitted = false;
